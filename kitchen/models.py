@@ -20,9 +20,13 @@ class DishType(models.Model):
     def __str__(self):
         return self.name
 
+class Ingredient(models.Model):
+    name = models.CharField(max_length=100)
+
 
 class Dish(models.Model):
     name = models.CharField(max_length=100)
+    ingredients = models.ManyToManyOne(Ingridient)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     dish_type = models.ForeignKey(DishType, on_delete=models.CASCADE)
