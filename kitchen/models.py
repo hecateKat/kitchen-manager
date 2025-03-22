@@ -1,5 +1,5 @@
 from django.contrib.auth.models import AbstractUser
-from django.forms import models
+from django.db import models
 
 
 class Cook(AbstractUser):
@@ -21,6 +21,11 @@ class DishType(models.Model):
         return self.name
 
 
+class Ingredient(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    quantity = models.CharField(max_length=50)
+
+
 class Dish(models.Model):
     name = models.CharField(max_length=100)
     ingredients = models.ManyToManyField(Ingredient)
@@ -31,8 +36,3 @@ class Dish(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.dish_type})"
-
-
-class Ingredient(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-    quantity = models.CharField(max_length=50)
