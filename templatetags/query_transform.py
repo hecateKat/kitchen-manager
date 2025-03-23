@@ -1,6 +1,6 @@
 from django import template
 
-register = template.KitchenManager()
+register = template.Library()
 
 
 @register.simple_tag
