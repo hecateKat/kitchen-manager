@@ -23,24 +23,24 @@ from .views import (
 urlpatterns = [
     path("", index, name="index"),
     path(
-        "dish_type_list/",
+        "dish-type-list/",
         DishTypeListView.as_view(),
-        name="dish_type_list",
+        name="dish-type-list",
     ),
     path(
-        "dish_types/create/",
+        "dish-types/create/",
         DishTypeCreateView.as_view(),
-        name="dish_type-create",
+        name="dish-type-create",
     ),
     path(
-        "dish_types/<int:pk>/update/",
+        "dish-types/<int:pk>/update/",
         DishTypeUpdateView.as_view(),
-        name="dish_type-update",
+        name="dish-type-update",
     ),
     path(
-        "dish_types/<int:pk>/delete/",
+        "dish-types/<int:pk>/delete/",
         DishTypeDeleteView.as_view(),
-        name="dish_type-delete",
+        name="dish-type-delete",
     ),
     path("dishes/", DishListView.as_view(), name="dish-list"),
     path("dishes/<int:pk>/", DishDetailView.as_view(), name="dish-detail"),
