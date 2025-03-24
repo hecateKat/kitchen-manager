@@ -3,7 +3,7 @@ from django.db import models
 
 
 class Cook(AbstractUser):
-    years_of_experience = models.IntegerField()
+    years_of_experience = models.IntegerField(null=True, blank=True)
 
     class Meta:
         verbose_name = "cook"
@@ -21,14 +21,8 @@ class DishType(models.Model):
         return self.name
 
 
-class Ingredient(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-    quantity = models.CharField(max_length=50)
-
-
 class Dish(models.Model):
     name = models.CharField(max_length=100)
-    ingredients = models.ManyToManyField(Ingredient)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     dish_type = models.ForeignKey(DishType, on_delete=models.CASCADE)
