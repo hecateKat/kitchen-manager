@@ -52,10 +52,10 @@ class CookYearsUpdateForm(forms.ModelForm):
 def validate_years_of_experience(
     years_of_experience,
 ):
-    if years_of_experience < 0:
-        raise ValidationError("Should be more than 0")
-    elif not years_of_experience.isdigit():
+    if not years_of_experience.isdigit():
         raise ValidationError("Must be a number")
+    elif int(years_of_experience) < 0:
+        raise ValidationError("Should be more than 0")
 
     return years_of_experience
 
